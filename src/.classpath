@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="F:/DSI/JARS/commons-dbcp2-2.6.0.jar"/>
+	<classpathentry kind="lib" path="F:/DSI/JARS/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="F:/DSI/JARS/commons-pool2-2.6.2.jar"/>
+	<classpathentry kind="lib" path="F:/DSI/JARS/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="F:/DSI/JARS/ojdbc7.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
