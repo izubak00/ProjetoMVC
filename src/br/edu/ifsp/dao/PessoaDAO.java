@@ -63,23 +63,80 @@ public class PessoaDAO {
 		return listaPessoas;
 	}
 	
-	/*public Pessoa consultarPessoaPorId(int id) {
+	public Pessoa consultarPessoaPorId(int id) {
+		
+		Pessoa p = new Pessoa();
+
+		try {
+
+			this.con = Conexao.getInstance();
+
+			String sql = "SELECT `nomecompleto`, `idade` FROM `pessoa` WHERE `id` = ?";
+
+			PreparedStatement pstm = con.getConexao().prepareStatement(sql);
+			pstm.setInt(1, id);
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next()) {
+
+				p.setNome(rs.getString("nomecompleto"));
+				p.setIdade(rs.getInt("idade"));
+			}
+
+		} catch(SQLException e) {
+			
+			System.out.println("Problema ao encontrar uma pessoa");
+			e.printStackTrace();
+		}
+		
+		
+		return p;
+	}
 	
-	}*/
+	//O HEADER QUE O PROFESSOR PASSOU SÓ TINHA O ID COMO PARAMETRO, NÃO CONSEGUI PENSAR NUMA MANEIRA DE EDITAR
+	//SÓ CONSEGUINDO PASSAR O ID, ENTÃO MUDEI PRA RECEBER OS 3 VALORES
 	
-	public void editarPessoaPorId(int id) {
+	public void editarPessoaPorId(int id, String nome, int idade) {
+		
+		try {
+			
+			this.con = Conexao.getInstance();
+		
+			String sql = "UPDATE `pessoa` SET `nomecompleto`= ? ,`idade`= ? WHERE `id` = ?";
+			PreparedStatement pstm = con.getConexao().prepareStatement(sql);
+			pstm.setString(1, nome);
+			pstm.setInt(2, idade);
+			pstm.setInt(3, id);
+			pstm.executeUpdate();
+			
+			System.out.println("Foi Editado com sucesso");
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Problema ao editar uma pessoa");
+			e.printStackTrace();
+		}	
 		
 	}
 
-	public void removerPessoaPorId(int id) {
+	public void removerPessoaPorId(int id) {		
+		try {
+			
+			this.con = Conexao.getInstance();
 		
+			String sql = "DELETE FROM `pessoa` WHERE `id` = ?";
+			PreparedStatement pstm = con.getConexao().prepareStatement(sql);
+			pstm.setInt(1, id);
+			pstm.executeUpdate();
+			
+			System.out.println("Foi removido com sucesso");
+			
+		} catch(SQLException e) {
+			
+			System.out.println("Problema ao remover uma pessoa");
+			e.printStackTrace();
+		}	
 		
 	}
-	
-	public Pessoa dadosEdit(String nome, int idade) {
-		Pessoa p = new Pessoa();
-		p.setNome(nome);
-		p.setIdade(idade);		
-		return p;		
-	}
+
 }

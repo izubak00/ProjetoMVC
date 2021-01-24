@@ -14,7 +14,6 @@ import br.edu.ifsp.tela.FramePrincipal;
 public class EditaController implements ActionListener {
 
 	private FrameEdita tela;
-	private Pessoa modelo;
 	
 	public EditaController(FrameEdita fe) {
 		this.tela = fe;
@@ -33,8 +32,7 @@ public class EditaController implements ActionListener {
 			int id = Integer.parseInt(this.tela.getTfIdade().getText());
 		
 			PessoaDAO dao = new PessoaDAO();
-			dao.dadosEdit(nome, idade);
-			dao.editarPessoaPorId(id);
+			dao.editarPessoaPorId(id, nome, idade);
 		
 			JOptionPane.showMessageDialog(null, "Pessoa editada com Sucesso");
 			

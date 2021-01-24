@@ -14,7 +14,7 @@ public class Conexao {
 	
 	private Conexao() {
 		
-		try {			
+		try {
 			this.dataSource = DriverManager.getConnection(url, usuario, senha);
 		}
 		catch (SQLException e) {

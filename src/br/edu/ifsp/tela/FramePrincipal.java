@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.JTextArea;
 
 public class FramePrincipal extends JFrame {
 
@@ -14,6 +15,7 @@ public class FramePrincipal extends JFrame {
 	private JButton btnEditar;
 	private JButton btnBuscar;
 	private JButton btnListarTodos;
+	private JTextArea textArea;
 	
 	/**
 	 * Create the frame.
@@ -47,9 +49,9 @@ public class FramePrincipal extends JFrame {
 		btnListarTodos.setBounds(125, 172, 89, 23);
 		getContentPane().add(btnListarTodos);
 		
-		JTextPane textPane = new JTextPane();
-		textPane.setBounds(35, 206, 275, 104);
-		getContentPane().add(textPane);
+		textArea = new JTextArea();
+		textArea.setBounds(46, 220, 254, 90);
+		getContentPane().add(textArea);
 	}
 
 
@@ -91,5 +93,13 @@ public class FramePrincipal extends JFrame {
 	public void setbtnListarTodos(JButton btnListarTodos) {
 		this.btnListarTodos = btnListarTodos;
 	}
-
+	
+	public JTextArea gettextArea() {
+		return textArea;
+	}
+	
+	public void settextArea(String text) {		
+		
+		textArea.append(text);
+	}
 }

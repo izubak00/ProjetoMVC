@@ -2,7 +2,11 @@ package br.edu.ifsp.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
+import br.edu.ifsp.dao.PessoaDAO;
+import br.edu.ifsp.modelo.Pessoa;
+import br.edu.ifsp.tela.FrameBusca;
 import br.edu.ifsp.tela.FrameEdita;
 import br.edu.ifsp.tela.FrameInsere;
 import br.edu.ifsp.tela.FramePrincipal;
@@ -43,6 +47,25 @@ public class PrincipalController implements ActionListener {
 			FrameEdita fe = new FrameEdita();
 			EditaController rc = new EditaController(fe);
 			fe.setVisible(true);
+		}
+		if(e.getSource() == this.tela.getbtnBuscar()) {
+			
+			FrameBusca fb = new FrameBusca();
+			BuscaController bc = new BuscaController(fb);
+			fb.setVisible(true);
+		}
+		if(e.getSource() == this.tela.getbtnListarTodos()) {
+			
+			ArrayList<Pessoa> lista = new ArrayList<Pessoa>();
+			PessoaDAO dao = new PessoaDAO();
+			
+			lista = dao.consultarTodos();
+			
+			for (Pessoa p : lista) {
+				tela.settextArea("ID: " + p.getId() + " Nome: "+ p.getNome() + " Idade: " + p.getIdade() + "\n");
+			}
+			
+
 		}
 	}
 

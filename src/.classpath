@@ -7,5 +7,6 @@
 	<classpathentry kind="lib" path="F:/DSI/JARS/commons-pool2-2.6.2.jar"/>
 	<classpathentry kind="lib" path="F:/DSI/JARS/jcalendar-1.4.jar"/>
 	<classpathentry kind="lib" path="F:/DSI/JARS/ojdbc7.jar"/>
+	<classpathentry kind="lib" path="F:/DSI/JARS/mysql-connector-java-5.1.49.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>

@@ -6,29 +6,34 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import br.edu.ifsp.dao.PessoaDAO;
+import br.edu.ifsp.modelo.Pessoa;
+import br.edu.ifsp.tela.FrameBusca;
 import br.edu.ifsp.tela.FrameRemove;
 
-public class RemoveController implements ActionListener {
+public class BuscaController implements ActionListener {
 
-	private FrameRemove tela;
+	private FrameBusca tela;
+	private Pessoa modelo;
 	
-	public RemoveController(FrameRemove fr) {
-		this.tela = fr;
-		this.tela.getbtnRemover().addActionListener(this);
+	public BuscaController(FrameBusca fb) {
+		this.tela = fb;
+		this.tela.getbtnBuscar().addActionListener(this);
 		this.tela.getbtnVoltar().addActionListener(this);
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource() == this.tela.getbtnRemover()) {
+		if(e.getSource() == this.tela.getbtnBuscar()) {
 			
 			int id = Integer.parseInt(this.tela.gettextField().getText());
 			
 			PessoaDAO dao = new PessoaDAO();
-			dao.removerPessoaPorId(id);
+			modelo = dao.consultarPessoaPorId(id);
+			
+			tela.settextArea("Nome: " + modelo.getNome() + " Idade: " + modelo.getIdade());
 		
-			JOptionPane.showMessageDialog(null, "Pessoa removida com Sucesso");
+			JOptionPane.showMessageDialog(null, "Busca efetuada com Sucesso");
 			
 		}
 		if(e.getSource() == this.tela.getbtnVoltar()) {
